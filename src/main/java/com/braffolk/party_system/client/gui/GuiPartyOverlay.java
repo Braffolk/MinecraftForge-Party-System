@@ -87,7 +87,7 @@ public class GuiPartyOverlay extends GuiScreen {
                         drawScaledCustomSizeModalRect( xoff + b_width - 4, yoff + 3, 24, 0, w3, 20, w3, 20, 64.0F, 64.0F );
                      }
                   }
-                  if( health < 1.0F ) {
+                  if( health < (b_width - 2.0F) / b_width && health > 2.0F / b_width ) {
                      drawScaledCustomSizeModalRect( xoff + (int) ( b_width * health ), yoff + 3, 12, 0, 1, 20, 1, 20, 64.0F, 64.0F );
                      drawScaledCustomSizeModalRect( xoff + (int) ( b_width * health ) - 1, yoff + 3, 28, 0, 1, 20, 1, 20, 64.0F, 64.0F );
                   }
