@@ -1,0 +1,46 @@
+#PARSE_ESCAPES
+itemGroup.party_system=Party System
+
+commands.party.usage=/party <create:disband:invite:join:kick:leave:owner:color> [value]
+commands.party.create.usage=/party create
+commands.party.create.success=Successfully created a party
+commands.party.create.failure=You are already in a party!
+
+commands.party.disband.success=Party disbanded
+commands.party.disband.failure.notOwner=You need to be the owner of the party to do that.
+commands.party.disband.failure.notIn=You are not in a party.
+
+commands.party.invite.usage=/party invite <player>
+commands.party.invite.invited=Invited '%s' to the party.
+commands.party.invite.success='%s' has joined the party.
+commands.party.inviteMessage='%s' invited you to their party, to join write: /party join %s
+commands.party.joinRequest='%s' wishes to join your party, to invite write: /party invite %s
+
+commands.party.join.requested=Sent a request to join the party of %s
+commands.party.join.success=Joined the party of %s
+commands.party.join.usage=/party join <player>
+commands.party.join.usage=/party join <player>
+commands.party.join.failure.inParty=You must leave your party before joining another
+commands.party.join.failure=No such player exists or they have no party
+
+commands.party.invite.failure.noPlayer=The user '%s' is not online or doesn't exist
+commands.party.invite.failure.notOwner=You must be the owner of the party to do that
+
+commands.party.leave.usage=/party leave
+commands.party.leave.success=You left the party
+commands.party.leave.failure=You need to be in a party to leave one.
+
+commands.party.kick.usage=/party kick <player>
+commands.party.kick.success=The user '%s' has been kicked from the party
+commands.party.kick.failure.notOwner=You must be the owner of the party to do that
+commands.party.kick.failure.notIn=You are not in a party
+
+commands.party.owner.usage=/party owner <player> - transfers ownership of the party
+commands.party.owner.success=The user '%s' has been kicked from the party
+
+commands.party.failure.UserNotInParty=Player '%s' is not in the party
+commands.party.failure.notOwner=You must be the owner of the party to do that
+commands.party.failure.notIn=You are not in a party
+
+commands.party.error.rejoin_own_team=Error, your party already existed but you weren't in it. Rejoined.
+commands.party.error.onlyPlayers=Error, these commands can only be used by players.
