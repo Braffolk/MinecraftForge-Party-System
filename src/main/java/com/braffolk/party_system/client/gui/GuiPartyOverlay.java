@@ -48,11 +48,11 @@ public class GuiPartyOverlay extends GuiScreen {
             Collection<String> members = team.getMembershipCollection(); // Members of our team
             NetworkPlayerInfo[] renderArray = new NetworkPlayerInfo[members.size()]; // The actual array to render from
             
-            int b_width = 35;
+            int b_width = 30;
             int b_width_max = 150;
             for( NetworkPlayerInfo playerInfo : coll ) {
                if( members.contains( playerInfo.getGameProfile().getName() ) ) {
-                  b_width = Math.min( Math.max( mc.fontRenderer.getStringWidth( playerInfo.getGameProfile().getName() ) + 40, b_width ), b_width_max );
+                  b_width = Math.min( Math.max( mc.fontRenderer.getStringWidth( playerInfo.getGameProfile().getName() ) + 35, b_width ), b_width_max );
                   renderQueue.add( playerInfo );
                }
             }
@@ -95,22 +95,22 @@ public class GuiPartyOverlay extends GuiScreen {
                // head container
                drawScaledCustomSizeModalRect( xoff + 4, yoff, 0, 32, 27, 26, 27, 26, 64.0F, 64.0F );
                
-               // Owner of the party
-               if( team.getName().equals( name ) ) {
-                  drawScaledCustomSizeModalRect( xoff - 3, yoff - 7, 32, 0, 16, 16, 16, 16, 64.0F, 64.0F );
-               }
+               
                
                // Name
                if( name != null ) {
-                  mc.fontRenderer.drawStringWithShadow( name, xoff + 35, yoff + 9, -1 );
+                  mc.fontRenderer.drawStringWithShadow( name, xoff + 30, yoff + 6, -1 );
                }
                
                
                // Head
                mc.getTextureManager().bindTexture( player.getLocationSkin() );
                
+               float hh = 13F; // 17.0
+               float hw = hh * (37.0F / 34.0F);
+               
                drawTexturedPlane( // Front
-                   xoff + 9.0F, yoff + 4.0F, 17.0F, 18.5F,
+                   xoff + 8.0F, yoff + 4.0F, hw, hh,
                    0.5F, 16.0F / 37.0F,
                    1.0F, 8.0F / 37.0F,
                    1.0F, 29.0F / 37.0F,
@@ -120,7 +120,7 @@ public class GuiPartyOverlay extends GuiScreen {
                    0.65F
                );
                drawTexturedPlane( // Top
-                   xoff + 9.0F, yoff + 4.0F, 17.0F, 18.5F,
+                   xoff + 8.0F, yoff + 4.0F, hw, hh,
                    0.0F, 8.0F / 37.0F,
                    0.5F, 0.0F,
                    1.0F, 8.0F / 37.0F,
@@ -130,7 +130,7 @@ public class GuiPartyOverlay extends GuiScreen {
                    1.0F
                );
                drawTexturedPlane( // Leftside
-                   xoff + 9.0F, yoff + 4.0F, 17.0F, 18.5F,
+                   xoff + 8.0F, yoff + 4.0F, hw, hh,
                    0.0F, 8.0F / 37.0F,
                    0.5F, 16.0F / 37.0F,
                    0.5F, 1.0F,
@@ -140,9 +140,14 @@ public class GuiPartyOverlay extends GuiScreen {
                    0.8F
                );
                
+               float hfh = hh * (19.0F / 17.0F);
+               float hfw = hw * (19.0F / 17.0F);
+               float hx  = ( hfh - hh ) * 0.5F;
+               float hy = ( hfw - hw ) * 0.5F;
+               
                
                drawTexturedPlane( // Layer 2 Front
-                   xoff + 9.0F - 1.0F, yoff + 4.0F - 1.08825F, 19.0F, 20.6765F,
+                   xoff + 8.0F - hx, yoff + 4.0F - hy, hfw, hfh,
                    0.5F, 16.0F / 37.0F,
                    1.0F, 8.0F / 37.0F,
                    1.0F, 29.0F / 37.0F,
@@ -152,7 +157,7 @@ public class GuiPartyOverlay extends GuiScreen {
                    0.65F
                );
                drawTexturedPlane( // Layer 2 Top
-                   xoff + 9.0F - 1.0F, yoff + 4.0F - 1.08825F, 19.0F, 20.6765F,
+                   xoff + 8.0F - hx, yoff + 4.0F - hy, hfw, hfh,
                    0.0F, 8.0F / 37.0F,
                    0.5F, 0.0F,
                    1.0F, 8.0F / 37.0F,
@@ -162,7 +167,7 @@ public class GuiPartyOverlay extends GuiScreen {
                    1.0F
                );
                drawTexturedPlane( // Layer 2 Leftside
-                   xoff + 9.0F - 1.0F, yoff + 4.0F - 1.08825F, 19.0F, 20.6765F,
+                   xoff + 8.0F - hx, yoff + 4.0F - hy, hfw, hfh,
                    0.0F, 8.0F / 37.0F,
                    0.5F, 16.0F / 37.0F,
                    0.5F, 1.0F,
@@ -171,8 +176,14 @@ public class GuiPartyOverlay extends GuiScreen {
                    8.0F / 64.0F, 8.0F / 64.0F,
                    0.8F
                );
+   
+               // Owner of the party
+               if( team.getName().equals( name ) ) {
+                  mc.renderEngine.bindTexture( tex_overlay );
+                  drawScaledCustomSizeModalRect( xoff - 3, yoff - 7, 32, 0, 16, 16, 16, 16, 64.0F, 64.0F );
+               }
                
-               yoff += 27;
+               yoff += 22;
             }
          }
       }
